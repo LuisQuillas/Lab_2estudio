@@ -1,0 +1,39 @@
+============================================================
+ PLANTILLA SPRING BOOT (MVC + Thymeleaf + JPA + MySQL)
+ Base lista para correr y empezar cualquier CRUD.
+============================================================
+
+--- COMO USARLA (3 pasos) ---
+
+1) Abrir en IntelliJ:
+   File -> Open... -> selecciona la carpeta "plantilla-springboot"
+   (o abre el archivo pom.xml). Espera que Maven descargue dependencias.
+
+2) Crear la base de datos vacia en MySQL Workbench:
+   CREATE DATABASE midb;
+   (o cambia "midb" por el nombre que quieras, y ajustalo en application.properties)
+   -> No necesitas crear las tablas: Hibernate las crea solo (ddl-auto=update).
+
+3) Correr la clase PlantillaApplication (boton ▶️) y abrir:
+   http://localhost:8080/
+   -> Debe cargar la pagina con el titulo. ¡Listo!
+
+--- QUE CAMBIAR PARA TU LAB (busca "CAMBIA AQUI" en cada archivo) ---
+
+- application.properties -> nombre de la BD, usuario, password.
+- entity/Entidad.java     -> nombre de la clase, tabla y columnas (@Column) + getters/setters (Alt+Insert).
+- repository/EntidadRepository.java -> nombre del repo y la entidad.
+- controller/MainController.java    -> rutas ("/entidad" -> lo tuyo) y nombres de vistas.
+- templates/index.html    -> el titulo.
+
+--- PARA CADA VISTA NUEVA (lista, new, edit, reporte) ---
+Crea un HTML dentro de: src/main/resources/templates/<carpeta>/
+y que el nombre coincida con el "return" del controller.
+Ej.: return "entidad/lista";  ->  templates/entidad/lista.html
+
+--- RECORDATORIOS DE ORO ---
+* Spring Boot 3/4 usa jakarta.persistence (NO javax).
+* @Id (no @ID), @Column (no @Colum).
+* El name= de un <input> debe ser IGUAL al atributo Java (camelCase).
+* SIEMPRE genera getters/setters (Alt+Insert).
+============================================================

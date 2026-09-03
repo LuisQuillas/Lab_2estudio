@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PLANTILLA BASE DE VISTA THYMELEAF (genérica, sin CSS)
+     ------------------------------------------------------------
+     COMO USARLA:
+     1. Copia este archivo dentro de:  src/main/resources/templates/
+     2. Renombra el archivo (ej. lista.html, new.html, reporte.html)
+     3. En tu CONTROLLER, el  return "nombreDelArchivoSinHtml"
+        debe coincidir EXACTO con el nombre que le pusiste.
+        Ej.: archivo "lista.html"  ->  return "lista";
+     ============================================================ -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- ===== CAMBIA EL TITULO AQUI (pestaña del navegador) ===== -->
+    <title>TITULO</title>
+</head>
+<body>
+
+<!-- ===== CAMBIA EL TITULO AQUI (encabezado visible de la página) ===== -->
+<h1>TITULO</h1>
+
+
+<!-- ============================================================
+     AQUI VA TU CONTENIDO (todo lo de abajo queda en blanco).
+     Debajo tienes bloques LISTOS que puedes descomentar y usar.
+     Para descomentar: borra el   <!==   del inicio y el   ==>   del final.
+     ============================================================ -->
+
+
+<!-- ============ BLOQUE 1: TABLA (listar) ============
+     Requiere en el controller:
+         model.addAttribute("listaX", xRepository.findAll());
+     CAMBIA:  listaX  por el nombre de tu lista
+     CAMBIA:  x.campo1 / x.campo2  por los atributos de tu entidad
+
+<table border="1">
+    <tr>
+        <th>Columna 1</th>
+        <th>Columna 2</th>
+    </tr>
+    <tr th:each="x : ${listaX}">
+        <td th:text="${x.campo1}"></td>
+        <td th:text="${x.campo2}"></td>
+    </tr>
+</table>
+================================================= -->
+
+
+<!-- ============ BLOQUE 2: FORMULARIO (registrar) ============
+     Requiere en el controller:
+         @PostMapping("/ruta/guardar")  con save(objeto)  +  redirect
+     CAMBIA:  /ruta/guardar  por tu ruta
+     CAMBIA:  name="campo1"  por el ATRIBUTO JAVA de tu entidad (camelCase EXACTO)
+
+<form method="post" th:action="@{/ruta/guardar}">
+    <label>Campo 1</label>
+    <input type="text" name="campo1"><br>
+
+    <label>Campo 2</label>
+    <input type="text" name="campo2"><br>
+
+    <button type="submit">Guardar</button>
+</form>
+========================================================== -->
+
+
+</body>
+</html>
